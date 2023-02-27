@@ -1,0 +1,121 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  :root {
+	--nav-height: 40px;
+	--hamburger-height: 16px;
+	--hamburger-width: 22px;
+  }
+  nav {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	height: var(--nav-height);
+	padding-right: 20px;
+  }
+  nav div#cover {
+	background-color: white;
+	width: 100%;
+	height: var(--nav-height);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	border-bottom: 1px solid black;
+  }
+  /* links */
+  
+  nav div#links {
+	position: absolute;
+	width: 100%;
+	top: var(--nav-height);
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: top 0.5s;
+  }
+  
+  nav div#links a {
+	color: #333;
+	display: inline-block;
+	margin: 10px;
+	text-decoration: none;
+  }
+  
+  nav input[type='checkbox']:checked ~ div#links {
+	top: -100px;
+  }
+  
+  /* links */
+  
+  
+  /* hamburger */
+  
+  nav #hamburger {
+	width: var(--hamburger-width);
+	height: var(--hamburger-height);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	z-index:20;
+  }
+  nav #hamburger span {
+	width: 100%;
+	height: 2px;
+	background: black;
+	transition: 0.3s ease;
+	transform-origin: left;
+  }
+  nav input[type='checkbox'] {
+	width: var(--hamburger-width);
+	height: var(--hamburger-height);
+	display: block;
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	z-index: 30;
+	opacity: 0;
+	cursor: pointer;
+  }
+  nav input[type='checkbox']:checked + div#hamburger span:nth-child(1) {
+	  transform: rotate(40deg);
+  }
+  nav input[type='checkbox']:checked + div#hamburger span:nth-child(3) {
+	  transform-origin: left;
+  }
+  nav input[type='checkbox']:checked + div#hamburger span:nth-child(3) {
+	  transform: rotate(-40deg);
+  }
+  nav input[type='checkbox']:checked + div#hamburger span:nth-child(2) {
+	  transform: scale(0);
+  }
+  
+  /* end hamburger */
+  
+  
+  /* desktop */
+  @media (min-width: 1500px) {
+	nav input[type='checkbox'],
+	div#hamburger, 
+	div#cover {
+	  display: none
+	}
+	
+	nav div#links {
+	  flex-direction: row;
+	  top: 0;
+	  justify-content: flex-end;
+	  transition: unset;
+	}
+  }
+  /* desktop */
